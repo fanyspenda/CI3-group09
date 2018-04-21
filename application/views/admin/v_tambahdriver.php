@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="">
 	<head>
+
+		<style type="text/css">
+			.skala{
+				margin-left:10px;
+				width:500px;
+			}
+
+		</style>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Data Driver</title>
+		<title>Tambah Data Driver</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 	</head>
 	<body>
 		<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
@@ -40,6 +52,7 @@
 				</button>
 			<a href="#" class="w3-bar-item w3-button">Akunku</a>
 		</div>
+
 		<div id="main">
 			<nav class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
@@ -51,57 +64,55 @@
 					</div>
 				</div>
 			</nav>
+			<?php echo form_open_multipart('admin/C_AdminHome/addDriverData');?>
+				<i><b><div style="margin-left:430px;"><h1>FORM TAMBAH DATA DRIVER</h1></div></b></i>
+				<legend></legend>
+			
+				<label style="margin-left:430px;">ID</label>
+				<input type="text" class="form-control" name="id" placeholder="ID Driver" style="margin-left:430px; width:500px;" required><br><br>
 
-			<h1 class="text-center">Data Driver</h1>
-			<div class="container">
-				<table class="table table-striped table-bordered data">
-					<thead>
-						<tr>			
-							<th>ID</th>
-							<th>NIK</th>
-							<th>Nama</th>
-							<th>tgl Lahir</th>
-							<th>Alamat</th>
-							<th>Jenis Kelamin</th>
-							<th>Nomor HP</th>
-							<th>tgl Kerja</th>
-							<th>Foto</th>
-							<th>Gaji</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ($getDriver as $key) {?>
-						<tr>				
-							<td><?php echo $key['id']; ?></td>
-							<td><?php echo $key['NIK']; ?></td>
-							<td><?php echo $key['nama']; ?></td>
-							<td><?php echo $key['tgl_lahir']; ?></td>
-							<td><?php echo $key['alamat']; ?></td>
-							<td><?php echo $key['jenis_kelamin']; ?></td>
-							<td><?php echo $key['nomorhp']; ?></td>
-							<td><?php echo $key['tgl_kerja']; ?></td>
-							<?php $dirImageDriver = '/foto/driver/';
-							$imgName = $key["foto"];
-							$imgLoader = $dirImageDriver . $imgName;
-							?>
-							<td><img src="<?php echo base_url($imgLoader);?>" style='width:185px; height: 200px'></td>
-							<td><?php echo $key['gaji']; ?></td>
-						</tr>
-						<?php } ?>
-					</tbody>
-				</table>
-			</div>
+				<label style="margin-left:430px;">NIK</label>
+				<input type="text" class="form-control" name="nik" placeholder="NIK Driver" style="margin-left:430px; width:500px;" required><br><br>
+
+				<label style="margin-left:430px;">Nama</label>
+				<input type="text" class="form-control" name="nama" placeholder="nama lengkap" style="margin-left:430px; width:500px;" required><br><br>
+
+				<label style="margin-left:430px;">Tanggal Lahir</label>
+				<input type="date" class="form-control" name="tgl_lahir" style="margin-left:430px; width:500px;" required><br><br>
+
+				<label style="margin-left:430px;">Alamat</label>
+				<textarea class="form-control" name="alamat" placeholder="Alamat lengkap" style="margin-left:430px; width:500px; height:90px;" required></textarea><br><br>
+
+				<label style="margin-left:430px;">Jenis Kelamin:</label>
+				<input type="radio"  name="jenKel" value="pria" style="margin-left:30px;" required>Pria
+				<input type="radio"  name="jenKel" value="wanita" style="margin-left:20px;">Wanita
+				<br>
+				<br>
+
+				<label style="margin-left:430px;">Nomor HP</label>
+				<input type="text" class="form-control" name="nomorhp" placeholder="Nomor HP yang bisa dihubungi" style="margin-left:430px; width:500px;" required><br><br>
+				
+				<label style="margin-left:430px;">Tanggal Kerja</label>
+				<input type="date" class="form-control" name="tgl_kerja" style="margin-left:430px; width:500px;" required><br><br>
+
+				<label style="margin-left:430px;">Gaji</label>
+				<input type="text" class="form-control" name="gaji" style="margin-left:430px; width:500px;" required><br><br>
+				
+				
+				<label style="margin-left:430px;">Foto Driver</label>
+				<input type="file" name="foto" size="20" style="margin-left:430px; width:500px;" required><br><br>
+
+				<button type="submit" class="btn btn-primary" style="margin-left:480px; width:400px; height:60px;">Simpan Data</button>
+				<br><br>
+			<?php echo form_close(); ?>
 		</div>
-
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
  		<script src="Hello World"></script>
 	</body>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('.data').DataTable();
-		});
-	</script>
 
 	<script>
 		function w3_open() {
@@ -154,5 +165,5 @@
 		    }
 		}
 
-		</script>
+	</script>
 </html>

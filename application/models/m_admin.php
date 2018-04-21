@@ -14,6 +14,11 @@ class M_admin extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function addDriver($data, $tabel)
+	{
+		$this->db->insert($tabel, $data);
+	}
+
 }
 
 /* End of file driver.php */

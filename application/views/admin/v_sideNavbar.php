@@ -2,7 +2,7 @@
 			<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">&#9776; Daftar Menu</button>
 				<button class="w3-button w3-block w3-left-align" onclick="driverMenu()">Data Driver &#x25BC;<i class="fa fa-caret-down"></i>
 					<div id="lihatDriver" class="w3-hide w3-white w3-card">
-						<a href="<?php echo base_url("admin/c_adminhome/todriverdata")?>" class="w3-bar-item w3-button">Lihat Data Driver</a>
+						<a href="<?php echo base_url("admin/lihatdriver")?>" class="w3-bar-item w3-button">Lihat Data Driver</a>
     					<a href="#" class="w3-bar-item w3-button">Tambah Data Driver</a>
 					</div>
 				</button>

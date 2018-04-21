@@ -19,7 +19,7 @@
 	<body>
 		<h1 class="text-center">LOGIN</h1>
 
-		<a href="<?php echo base_url('admin/c_adminhome/menu')?>">ke hal admin</a>
+		<a href="<?php echo base_url('admin')?>">ke hal admin</a>
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
