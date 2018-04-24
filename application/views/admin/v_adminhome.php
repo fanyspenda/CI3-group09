@@ -8,7 +8,10 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+				<!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,31 +21,13 @@
 		<![endif]-->
 
 	</head>
-
 	<body>
-		<!-- navigasi Samping -->
-		<?php $this->load->view('admin/v_sideNavbar') ?>
-		<!--end of Navigasi Samping -->
-
-		<div id="main">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<div id="main">
-							<button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button><font id="judul" size="4">Sistem Informasi Jasa Driver</font>
-						</div>
-					</div>
-				</div>
-			</nav>
-			<div class="jumbotron">
-				<div class="container">
-					<h1>Hello, Admin!</h1>
-					<p>Contents ...</p>
-				</div>
+		<?php $this->load->view('admin/v_navbar');?>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>Hello, Admin!</h1>
+				<p>Contents ...</p>
 			</div>
 		</div>
-		
-		<?php $this->load->view('admin/template/funHomeAdmin'); ?>
 	</body>
 </html>
