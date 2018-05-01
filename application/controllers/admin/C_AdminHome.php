@@ -27,6 +27,13 @@ class C_AdminHome extends CI_Controller {
 		$this->load->view('admin/v_tambahdriver');
 	}
 
+	public function toDriverDetail()
+	{
+		$idDriver = $this->input->post('details');
+		$data['driverDetail'] = $this->m_admin->getDriverByID($idDriver);
+		$this->load->view('admin/v_detaildriver', $data);
+	}
+
 	public function toDriverEdit()
 	{
 		$idDriver = $this->input->post('edit');
@@ -51,6 +58,7 @@ class C_AdminHome extends CI_Controller {
 		}else{
 			$config['upload_path'] = './foto/driver';
 			$config['allowed_types'] = 'gif|jpg|png';
+			$config['file_name'] = 'driver_'.$id.$nama.$nik;
 			
 			$this->load->library('upload', $config);
 			
@@ -116,6 +124,7 @@ class C_AdminHome extends CI_Controller {
 			}else{
 				$config['upload_path'] = './foto/driver';
 				$config['allowed_types'] = 'gif|jpg|png';
+				$config['file_name'] = 'driver_'.$id.$nama.$nik;
 				
 				$this->load->library('upload', $config);
 				
@@ -143,6 +152,15 @@ class C_AdminHome extends CI_Controller {
 				redirect('admin/C_AdminHome/menu');
 			}
 		}
+	}
+
+	public function driverDelete()
+	{
+		$idDriver = $this->input->post('delete');
+		$foto = $this->input->post('foto');
+		$this->m_admin->deleteDriver($idDriver);
+		unlink('foto/driver/'.$foto);
+		redirect('admin/C_AdminHome/toDriverData');
 	}
 
 }

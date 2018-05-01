@@ -23,8 +23,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Data User dan Admin<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Lihat Data User</a></li>
-								<li><a href="#">Tambah Data User </a></li>
+								<li><a href="<?php echo base_url('admin/c_adminuser/touserdata')?>">Lihat Data User</a></li>
+								<li><a href="<?php echo base_url('admin/c_adminuser/toUserAdd')?>">Tambah Data User </a></li>
 								<li><a href="#">Lihat Data Admin </a></li>
 								<li><a href="#">Tambah Data Admin </a></li>
 							</ul>

@@ -6,7 +6,6 @@ class M_admin extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
-		//Do your magic here
 	}
 
 	public function getDataDriverArray(){
@@ -48,6 +47,11 @@ class M_admin extends CI_Model {
 		 tgl_kerja = '".$data['tgl_kerja']."', 
 		 foto = '".$data['foto']."',
 		 gaji = ".$data['gaji']." where id = ".$data['id']);
+	}
+
+	public function deleteDriver($idDriver)
+	{
+		$this->db->query("delete from driver where id = ".$idDriver);
 	}
 }
 
