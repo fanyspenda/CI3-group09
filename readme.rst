@@ -1,70 +1,28 @@
-###################
-What is CodeIgniter
-###################
+##################################################
+Kelompok 09: Sistem Informasi Penyedia Jasa Driver
+##################################################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Project ini bertujuan untuk menyediakan jasa/layanan Driver kendaraan pulang dan pergi antar kota secara online. Sistem Informasi ini dibangun dengan menggunakan CodeIgniter 3.
 
-*******************
-Release Information
-*******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+*****************
+Anggota Kelompok:
+*****************
+1. Clara Nadya Putri L 	(11)
+2. Fany Ervansyah		(14)
+3. Ryan Revantara Yuda	(26)
 
-**************************
-Changelog and New Features
-**************************
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+********************
+Server Requirements:
+********************
+PHP versi 5.6 atau lebih baru.
 
-*******************
-Server Requirements
-*******************
 
-PHP version 5.6 or newer is recommended.
-
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
-
-************
-Installation
-************
-
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
-
-*******
-License
-*******
-
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+**********
+Instalasi:
+**********
+1. Lakukan instalasi XAMPP versi 3.2.2.
+2. Letakkan folder project ke htdocs.
+3. Akses phpmyadmin dan import file .sql versi terbaru.
+4. Buka Project melalui localhost.

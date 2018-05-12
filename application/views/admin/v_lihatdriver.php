@@ -43,7 +43,7 @@
 						<td><?php echo $key['nama']; ?></td>
 						<td><?php echo $key['alamat']; ?></td>
 						<td><?php echo $key['nomorhp']; ?></td>
-						<td><?php echo date('d-M-Y', strtotime($key['tgl_kerja'])); ?></td>
+						<td><?php echo $key['tgl_kerja']; ?></td>
 						<?php $dirImageDriver = '/foto/driver/';
 						$imgName = $key["foto"];
 						$imgLoader = $dirImageDriver . $imgName;
@@ -55,13 +55,12 @@
 								<button class="btn btn-warning">Edit</button>
 							</form>
 							<br>
-							<form action="<?php echo base_url('admin/c_adminhome/driverdelete')?>" method="post">
+							<form action="<?php echo base_url('admin/c_adminhome/todriverdelete')?>" method="post">
 								<input type="hidden" name= "delete" class="form-control" value="<?php echo $key['id']; ?>">
-								<input type="hidden" name= "foto" class="form-control" value="<?php echo $key['foto']; ?>">
-								<button class="btn btn-danger" onclick ="return confirm('hapus data dengan ID Driver: <?php echo $key['id']; ?> ?')">Delete</button>
+								<button class="btn btn-danger" onclick="#delete">Delete</button>
 							</form>
 							<br>
-							<form action="<?php echo base_url('admin/c_adminhome/toDriverDetail')?>" method="post">
+							<form action="<?php echo base_url('admin/c_adminhome/todriverdetail')?>" method="post">
 								<input type="hidden" name= "details" class="form-control" value="<?php echo $key['id']; ?>">
 								<button class="btn btn-success">Details</button>
 							</form>

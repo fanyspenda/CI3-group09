@@ -14,5 +14,12 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home');
 	}
-	
+	public function profile()
+	{
+		$this->load->view('profile');
+	}
+	public function transaksi()
+	{
+		$this->load->view('transaksi');
+	}
 }

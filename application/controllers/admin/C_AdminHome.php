@@ -9,6 +9,7 @@ class C_AdminHome extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('m_admin');
 		$this->load->helper('form');
+		$this->load->library('form_validation');
 	}
 
 	public function menu()
@@ -25,13 +26,6 @@ class C_AdminHome extends CI_Controller {
 	public function toDriverAdd()
 	{
 		$this->load->view('admin/v_tambahdriver');
-	}
-
-	public function toDriverDetail()
-	{
-		$idDriver = $this->input->post('details');
-		$data['driverDetail'] = $this->m_admin->getDriverByID($idDriver);
-		$this->load->view('admin/v_detaildriver', $data);
 	}
 
 	public function toDriverEdit()
@@ -54,11 +48,10 @@ class C_AdminHome extends CI_Controller {
 		$gaji=$this->input->post('gaji');
 		$foto=$_FILES['foto']['name'];
 
-		if ($foto=='') {
+		if ($foto=='') {show_404();
 		}else{
 			$config['upload_path'] = './foto/driver';
 			$config['allowed_types'] = 'gif|jpg|png';
-			$config['file_name'] = 'driver_'.$id.$nama.$nik;
 			
 			$this->load->library('upload', $config);
 			
@@ -104,19 +97,19 @@ class C_AdminHome extends CI_Controller {
 		$foto=$_FILES['foto']['name'];
 
 		if ($validasiGantiGambar == 'tidak') {
-				$dataArray  = array('id' => $id,
-					'nama' => $nama,
-					'alamat' => $alamat,
-					'NIK' => $nik,
-					'nomorhp' => $nohp,			
-					'tgl_lahir' => $tglLahir,
-					'jenis_kelamin' => $jenisKelamin,
-					'tgl_kerja' => $tglKerja,
-					'gaji' => $gaji
-				);
+			$dataArray  = array('id' => $id,
+				'nama' => $nama,
+				'alamat' => $alamat,
+				'NIK' => $nik,
+				'nomorhp' => $nohp,			
+				'tgl_lahir' => $tglLahir,
+				'jenis_kelamin' => $jenisKelamin,
+				'tgl_kerja' => $tglKerja,
+				'gaji' => $gaji
+			);
 
-				$this->m_admin->editDriverNoImg($dataArray);
-				redirect('admin/C_AdminHome/toDriverData');
+			$this->m_admin->editDriverNoImg($dataArray);
+			redirect('admin/C_AdminHome/toDriverData');
 		}
 
 		elseif ($validasiGantiGambar == 'ya') {
@@ -124,7 +117,6 @@ class C_AdminHome extends CI_Controller {
 			}else{
 				$config['upload_path'] = './foto/driver';
 				$config['allowed_types'] = 'gif|jpg|png';
-				$config['file_name'] = 'driver_'.$id.$nama.$nik;
 				
 				$this->load->library('upload', $config);
 				
@@ -153,14 +145,29 @@ class C_AdminHome extends CI_Controller {
 			}
 		}
 	}
-
-	public function driverDelete()
+	public function addAdmin()
 	{
-		$idDriver = $this->input->post('delete');
-		$foto = $this->input->post('foto');
-		$this->m_admin->deleteDriver($idDriver);
-		unlink('foto/driver/'.$foto);
-		redirect('admin/C_AdminHome/toDriverData');
+		$data['page_title']  = 'Tambah Admin';
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username', 'username','required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('admin/v_tambahadmin', $data);
+		} else {
+			$this->m_admin->tambahAdmin();
+			redirect('admin/C_AdminHome/menu');
+		}
+	}
+	public function viewAdmin()
+	{
+		$data['getadmin'] = $this->m_admin->getDataAdmin();
+		$this->load->view('admin/v_lihatadmin',$data);
 	}
 
+	public function delete($id)
+	{
+		$data['dataAdmin'] = $this->m_admin->get_admin_by_id($id);
+		if (empty($id) || !$data['dataAdmin']) show_404();
+		$this->m_admin->deleteDataAdmin($id);
+		redirect('admin/C_AdminHome/menu');
+	}
 }

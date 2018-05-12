@@ -62,15 +62,11 @@
 				</div>
 
 				<button type="submit" class="btn btn-primary">Simpan Data</button>
+				<br><br>
 				<?php } ?>
 			<?php echo form_close(); ?>
-			</div>
-			<br>
-			<div style="margin-left: 50px; margin-right: 50px;">
-				<button class="btn btn-danger" onclick="location.href = '<?php echo base_url('admin/C_AdminHome/toDriverData');?>'">Kembali</button>
-			</div>
-		<br><br>
-		
+		</div>
+
 		<script>
 			function onClickGambar() {
 			var radioYa = document.getElementById("gambarYa");
