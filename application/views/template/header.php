@@ -6,7 +6,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,6 +21,10 @@
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/scss/style.css">
     <link href="<?php echo base_url()?>assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+    <!-- Link Manual Taruh Sini -->
+   <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <!-- penutup Link Manual -->
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -53,7 +56,9 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Transaksi</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
+                            <li><i class="fa fa-book"></i><a href="ui-switches.html">Lihat Transaksi</a></li>
+                            <li><i class="fa fa-book"></i><a href="ui-switches.html">Lakukan Transaksi</a></li>
+                            <!-- <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
                             <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
                             <li><i class="fa fa-share-square-o"></i><a href="ui-social-buttons.html">Social Buttons</a></li>
@@ -63,14 +68,13 @@
                             <li><i class="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
                             <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
                             <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
-                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
+                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li> -->
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-id-card-o"></i>Data Diri</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
+                            <li><i class="fa fa-id-card-o"></i><a href="tables-basic.html">Lihat Data Diri</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -126,56 +130,15 @@
     <!-- Left Panel -->
     
 
-            <div class="col-xl-6">
-                <div class="card" >
-                    <div class="card-header">
-                        <h4>World</h4>
-                    </div>
-                    <div class="Vector-map-js">
-                        <div id="vmap" class="vmap" style="height: 265px;"></div>
-                    </div>
-                </div>
-                <!-- /# card -->
-            </div>
+           <!--  <div class="col-xl-6">
 
-
-        </div> <!-- .content -->
-    </div><!-- /#right-panel -->
-
-    <!-- Right Panel -->
-
-    <script src="<?php echo base_url()?>assets/js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/plugins.js"></script>
-    <script src="<?php echo base_url()?>assets/js/main.js"></script>
-
-
-    <script src="<?php echo base_url()?>assets/js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="<?php echo base_url()?>assets/js/dashboard.js"></script>
-    <script src="<?php echo base_url()?>assets/js/widgets.js"></script>
-    <script src="<?php echo base_url()?>assets/js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="<?php echo base_url()?>assets/js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="<?php echo base_url()?>assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script>
-        ( function ( $ ) {
-            "use strict";
-
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
-    </script>
-
-</body>
-</html>
-
+                        <div class="card" >
+                            <div class="card-header">
+                                <h4>World</h4>
+                            </div>
+                            <div class="Vector-map-js">
+                                <div id="vmap" class="vmap" style="height: 265px;"></div>
+                            </div>
+                        </div>
+                      
+            </div> -->

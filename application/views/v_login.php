@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Login</title>
+		<title>Title Page</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -18,20 +18,25 @@
 	</head>
 	<body>
 		<?php $this->load->view('v_visitorheader');?>
-		<a href="<?php echo base_url('admin/C_AdminHome/menu')?>">ke hal admin</a>
 
-		<div class="container">
-			
+		
 
-			<div class="col-md-12">
-				<div class="jumbotron">
-					<h1>Hello, world!</h1>
-					<p>...</p>
-					<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-				</div>
-				<a href="<?php echo base_url('user/c_user')?>">ke Hal User</a>
-			</div>	
-		</div>
+		<?php echo form_open('home/login');
+		echo validation_errors('<div class = "alert alert-danger">', '</div>');
+		?>
+			<legend>LOGIN</legend>
+
+			<label>Username</label>
+			<input type="text" class="form-control" name="username" value="<?php echo set_value('username');?>" placeholder="masukkan username" autofocus><br>
+
+			<label>Password</label>
+			<input type="password" class="form-control" name="password" placeholder="masukkan password">
+			<br><br>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+
+		<?php echo form_close(); ?>
+
 		<?php $this->load->view('v_visitorfooter');?>
 	</body>
 </html>
