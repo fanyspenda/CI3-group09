@@ -10,6 +10,7 @@ class C_AdminHome extends CI_Controller {
 		$this->load->model('m_admin');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		
 	}
 
 	public function menu()
