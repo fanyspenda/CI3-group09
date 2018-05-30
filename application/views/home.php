@@ -17,19 +17,21 @@
 		<![endif]-->
 	</head>
 	<body>
-		<?php $this->load->view('v_visitorheader');?>
-		<a href="<?php echo base_url('admin/C_AdminHome/menu')?>">ke hal admin</a>
-
+	<?php $this->load->view('v_visitorheader');?>
 		<div class="container">
-			
-
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<div class="jumbotron">
-					<h1>Hello, world!</h1>
+					<h1><a href="<?php echo base_url('admin/C_AdminHome/menu')?>">ke hal admin</a></h1>
 					<p>...</p>
-					<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+					<p><a class="btn btn-primary btn-lg" href="<?php echo base_url('admin/C_AdminHome/menu')?>"" role="button">Learn more</a></p>
 				</div>
-				<a href="<?php echo base_url('user/c_user')?>">ke Hal User</a>
+			</div>
+			<div class="col-md-6">
+				<div class="jumbotron">
+					<h1><a href="<?php echo base_url('user/c_user')?>">ke hal User</a></h1>
+					<p>...</p>
+					<p><a class="btn btn-primary btn-lg" href="<?php echo base_url('user/c_user')?>" role="button">Learn more</a></p>
+				</div>
 			</div>	
 		</div>
 		<?php $this->load->view('v_visitorfooter');?>

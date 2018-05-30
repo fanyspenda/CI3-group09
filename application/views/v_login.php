@@ -20,7 +20,8 @@
 		<?php $this->load->view('v_visitorheader');?>
 
 		
-
+	<div class="container">
+	<center> 
 		<?php echo form_open('home/login');
 		echo validation_errors('<div class = "alert alert-danger">', '</div>');
 		?>
@@ -34,9 +35,9 @@
 			<br><br>
 
 			<button type="submit" class="btn btn-primary">Submit</button>
-
+			</center>
+</div>
 		<?php echo form_close(); ?>
-
 		<?php $this->load->view('v_visitorfooter');?>
 	</body>
 </html>
