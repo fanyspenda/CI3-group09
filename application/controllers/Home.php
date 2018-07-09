@@ -75,7 +75,8 @@ class Home extends CI_Controller {
 			        	$arrayDataUser = array(
 			        		'userid' => $key['id'],
 			        		'level' => $levelUser,
-			        		'nama' => $key['nama']
+			        		'nama' => $key['nama'],
+			        		'password' => $key['password']
 			        	);
 					}
 
@@ -102,7 +103,6 @@ class Home extends CI_Controller {
         		$this->session->set_flashdata('invalidLogin', 'Username atau password salah');
         		$this->load->view('v_login');
         	}
-
         }
 	}
 	// public function transaksi()

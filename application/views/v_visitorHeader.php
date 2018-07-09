@@ -37,6 +37,5 @@
 
 	if ($this->session->flashdata('wrongUser')) {
 		echo '<p class="alert alert-danger">'.$this->session->flashdata('wrongUser').'</p>';
-	}	
-
+	}
 ?>

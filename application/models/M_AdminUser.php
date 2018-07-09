@@ -54,7 +54,6 @@ class M_AdminUser extends CI_Model {
 	{
 		$this->db->query("delete from user where id = ".$idUser);
 	}
-
 }
 
 /* End of file M_UserAdmin.php */
