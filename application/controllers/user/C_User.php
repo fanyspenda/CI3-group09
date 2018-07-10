@@ -55,6 +55,7 @@ class C_User extends CI_Controller {
 		$tglKembali = date_create($this->input->post('tglkembali'));
 		$metodeBayar = $this->input->post('metodeBayar');
 		$passwordKonfirmasi = md5($this->input->post('confirmPass'));
+		//$passwordKonfirmasi = $this->input->post('confirmPass');
 		$jumlahHari = date_diff($tglBerangkat, $tglKembali);
 
 		//mengambil bagian selisih hari dari dateInterval dan menyimpan ke "jumlah hari"
@@ -79,17 +80,17 @@ class C_User extends CI_Controller {
 			if(confirm('harga total adalah: '+hargaTotal+'. Lanjutkan?')){
 			}else {
 				<?php
-					$data['daftarKota'] = $this->m_usertransaksi->getKota();
-					$this->load->view('template/header');
-					$this->load->view('user/v_buatTransaksi', $data);
-					$this->load->view('template/footer');
+				$data['daftarKota'] = $this->m_usertransaksi->getKota();
+				$this->load->view('template/header');
+				$this->load->view('user/v_buatTransaksi', $data);
+				$this->load->view('template/footer');
 				?>
 			}
 		</script>
 
 		<?php
 
-/*		memvalidasi apakah password sudah benar*/
+		/*		memvalidasi apakah password sudah benar*/
 		if($passwordKonfirmasi != $_SESSION['password']){
 			//kembali ke menu buat transaksi dengan pesan error
 			$this->session->set_flashdata('invalidPasswordTrans', 'Password Salah');
@@ -102,13 +103,23 @@ class C_User extends CI_Controller {
 				'jumlah_hari' => $jumlahHari,
 				'tanggal_kembali' => $this->input->post('tglkembali'),
 				'status' => "Baru Dibuat",
-				'harga_total' => $hargaTotal
+				'harga' => $hargaTotal
 			);
 
 			$this->m_usertransaksi->addTransaksi('transaksi', $data);
 
 			redirect('user/c_user');
 		}
+	}
+
+	public function lihatTransaksi()
+	{
+		$getTransaksiUser['getbysession']=  $this->m_usertransaksi->getTransaksiUser($_SESSION['userid']);
+		//var_dump($getTransaksiUser);
+
+		$this->load->view('template/header');
+		$this->load->view('user/v_lihatTransaksi',$getTransaksiUser);
+		$this->load->view('template/footer');
 	}
 
 }
