@@ -103,7 +103,7 @@ class C_User extends CI_Controller {
 				'jumlah_hari' => $jumlahHari,
 				'tanggal_kembali' => $this->input->post('tglkembali'),
 				'status' => "Baru Dibuat",
-				'harga' => $hargaTotal
+				'harga_total' => $hargaTotal
 			);
 
 			$this->m_usertransaksi->addTransaksi('transaksi', $data);
@@ -121,8 +121,12 @@ class C_User extends CI_Controller {
 		$this->load->view('user/v_lihatTransaksi',$getTransaksiUser);
 		$this->load->view('template/footer');
 	}
-
+	public function deleteTransaksiUser($id)
+	{
+		
+	}
 }
+
 
 /* End of file controllername.php */
 /* Location: ./application/controllers/controllername.php */

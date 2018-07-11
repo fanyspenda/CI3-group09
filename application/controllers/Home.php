@@ -56,7 +56,8 @@ class Home extends CI_Controller {
         	$username = $this->input->post('username');
 
         	//mengubah password yang diinputkan ke MD5
-        	$encPassword = md5($this->input->post('password'));
+        	//$encPassword = md5($this->input->post('password'));
+        	$encPassword = $this->input->post('password');
         	//$encPassword = $this->input->post('password');
 
         	//mengambil data Pengguna dan disimpan pada array

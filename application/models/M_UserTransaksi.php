@@ -26,7 +26,9 @@ class M_UserTransaksi extends CI_Model {
 	}
 	public function getTransaksiUser($id)
 	{
+
 		$getTransaksiUser = $this->db->query("SELECT * FROM user inner join transaksi on user.id = transaksi.id_user where user.id = '".$id."'");
+		
 		return $getTransaksiUser->result_array();
 	}
 }

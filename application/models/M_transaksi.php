@@ -19,4 +19,10 @@ class M_transaksi extends CI_Model {
 		$this->db->insert('transaksi', $data);
 	}
 
+	public function getAllTransaksi()
+	{
+		$query = $this->db->query('SELECT * from transaksi');
+		return $query->result_array();
+	}
+
 }
