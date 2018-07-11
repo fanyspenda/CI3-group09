@@ -57,7 +57,7 @@ class Home extends CI_Controller {
 
         	//mengubah password yang diinputkan ke MD5
         	//$encPassword = md5($this->input->post('password'));
-        	$encPassword = $this->input->post('password');
+        	$encPassword = md5($this->input->post('password'));
         	//$encPassword = $this->input->post('password');
 
         	//mengambil data Pengguna dan disimpan pada array
@@ -78,7 +78,8 @@ class Home extends CI_Controller {
 			        		'userid' => $key['id'],
 			        		'level' => $levelUser,
 			        		'nama' => $key['nama'],
-			        		'password' => $key['password']
+			        		'password' => $key['password'],
+			        		'foto' => $key['foto']
 			        	);
 					}
 
