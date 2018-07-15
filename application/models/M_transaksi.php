@@ -25,4 +25,16 @@ class M_transaksi extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function delete($id)
+	{
+		$this->db->where('id_transaksi', $id);
+		$this->db->delete('transaksi');
+	}
+	public function edit($id)
+	{
+		$this->db->where('id_transaksi', $id);
+		$object=array('status'=>"Selesai");
+		$this->db->update('transaksi', $object);
+	}
+
 }

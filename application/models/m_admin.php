@@ -9,6 +9,7 @@ class M_admin extends CI_Model {
 		//Do your magic here
 	}
 
+
 	public function getDataDriverArray(){
 		$query = $this->db->query("select * from driver");
 		return $query->result_array();

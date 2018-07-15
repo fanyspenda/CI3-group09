@@ -125,6 +125,56 @@ class C_User extends CI_Controller {
 	{
 		
 	}
+	public function getProfil()
+	{
+		$this->load->view('template/header');
+		$this->load->model('M_UserTransaksi');
+		$data['getprofil']=$this->M_UserTransaksi->getIdBySession($_SESSION['userid']);
+		$this->load->view('profile', $data);
+		$this->load->view('template/footer');
+	}
+	public function editProfil()
+	{
+			$this->load->model('M_UserTransaksi');
+
+			$this->form_validation->set_rules('username', 'Username', 'trim|required');
+        	$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+
+        $data['getprofil']=$this->M_UserTransaksi->getIdBySession($_SESSION['userid']);
+        	if ($this->form_validation->run() == FALSE) {
+        		$this->load->view('template/header');
+				$this->load->view('editprofil', $data);
+				$this->load->view('template/footer');
+        	}else{
+        	
+        		$config['upload_path'] = './foto';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
+				$config['max_size']  = 10000000; //kb
+				$config['max_width']  = 10240; //pixel
+				$config['max_height']  = 7680; //pixel
+				$this->upload->initialize($config);
+
+				$this->load->library('upload', $config);
+				if ( !$this->upload->do_upload('foto')){
+					$this->M_UserTransaksi->editProfil($_SESSION['userid']);
+					echo '<script>alert("Data Calon Berhasil di Update")</script>';
+					redirect('user/C_User/getProfil','refresh');
+				}else{
+
+					$this->M_UserTransaksi->editProfilFoto($_SESSION['userid']);
+					echo '<script>alert("Data dan Foto Calon Berhasil di Update")</script>';
+					redirect('user/C_User/getProfil','refresh');
+				}
+
+
+        	}
+
+
+
+
+		
+		
+	}
 }
 
 

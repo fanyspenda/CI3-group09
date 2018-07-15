@@ -79,7 +79,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-id-card-o"></i>Data Diri</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-id-card-o"></i><a href="tables-basic.html">Lihat Data Diri</a></li>
+                            <li><i class="fa fa-id-card-o"></i><a href="<?php echo base_url('user/c_user/getProfil')?>">Lihat Data Diri</a></li>
                         </ul>
                     </li><!-- 
                     <li class="menu-item-has-children dropdown">

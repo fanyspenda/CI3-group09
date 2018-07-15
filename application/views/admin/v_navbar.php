@@ -32,8 +32,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Transaksi<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Lihat Data Transaksi</a></li>
-								<li><a href="#">Tambah Data Transaksi</a></li>
+								<li><a href="gettransaksi">Lihat Data Transaksi</a></li>
+								<!-- <li><a href="#">Tambah Data Transaksi</a></li> -->
 							</ul>
 						</li>
 					</ul>

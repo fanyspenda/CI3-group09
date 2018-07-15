@@ -45,7 +45,7 @@ class C_AdminUser extends CI_Controller {
 	{
 		$id=$this->input->post('id');
 		$username = $this->input->post('username');
-		$password = $this->input->md5(post('password'));
+		$password = $this->input->post('password');
 		$nik=$this->input->post('nik');
 		$nama=$this->input->post('nama');
 		$tglLahirOld=$this->input->post('tgl_lahir');
@@ -61,7 +61,7 @@ class C_AdminUser extends CI_Controller {
 				$dataArray  = array('id' => $id,
 					'nama' => $nama,
 					'username' => $username,
-					'password' => $password,
+					'password' => md5($password),
 					'alamat' => $alamat,
 					'NIK' => $nik,
 					'nomorhp' => $nohp,			

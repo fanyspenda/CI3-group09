@@ -12,6 +12,26 @@ class C_AdminHome extends CI_Controller {
 		$this->load->library('form_validation');
 		
 	}
+	public function getTransaksi()
+	{
+
+	$this->load->model('M_transaksi');
+	$data['datatransaksi']= $this->M_transaksi->getAllTransaksi();
+	$this->load->view('admin/v_lihattransaksi', $data);
+	}
+
+	public function deleteTransaksi($id)
+	{
+		$this->load->model('M_transaksi');
+		$this->M_transaksi->delete($id);
+		redirect('admin/C_AdminHome/getTransaksi','refresh');
+	}
+	public function editTransaksi($id)
+	{
+		$this->load->model('M_transaksi');
+		$this->M_transaksi->edit($id);
+		redirect('admin/C_AdminHome/getTransaksi','refresh');
+	}
 
 	public function menu()
 	{
