@@ -21,9 +21,9 @@
 		<div class="container">
 			<div class="col-md-6">
 				<div class="jumbotron">
-					<h1><a href="<?php echo base_url('admin/C_AdminHome/menu')?>">ke hal admin</a></h1>
+					<h1><a href="<?php echo base_url('admin/C_AdminHome')?>">ke hal admin</a></h1>
 					<p>...</p>
-					<p><a class="btn btn-primary btn-lg" href="<?php echo base_url('admin/C_AdminHome/menu')?>"" role="button">Learn more</a></p>
+					<p><a class="btn btn-primary btn-lg" href="<?php echo base_url('admin/C_AdminHome')?>"" role="button">Learn more</a></p>
 				</div>
 			</div>
 			<div class="col-md-6">

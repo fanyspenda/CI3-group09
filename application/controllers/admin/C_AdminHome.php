@@ -12,12 +12,22 @@ class C_AdminHome extends CI_Controller {
 		$this->load->library('form_validation');
 		
 	}
+
+	public function index()
+	{
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/v_index');
+		$this->load->view('admin/template/footer');
+	}
+
 	public function getTransaksi()
 	{
 
-	$this->load->model('M_transaksi');
-	$data['datatransaksi']= $this->M_transaksi->getAllTransaksi();
-	$this->load->view('admin/v_lihattransaksi', $data);
+		$this->load->model('M_transaksi');
+		$data['datatransaksi']= $this->M_transaksi->getAllTransaksi();
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/v_lihattransaksi', $data);
+		$this->load->view('admin/template/footer');
 	}
 
 	public function deleteTransaksi($id)
@@ -41,20 +51,28 @@ class C_AdminHome extends CI_Controller {
 	public function toDriverData()
 	{
 		$data['getDriver']=$this->m_admin->getDataDriverArray();
-		$this->load->view('admin/v_lihatdriver', $data);
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/v_lihatdriver', $data);		
+		$this->load->view('admin/template/footer');
+
 	}
 
 	public function toDriverAdd()
 	{
+		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_tambahdriver');
+		$this->load->view('admin/template/footer');
 	}
 
 	public function toDriverEdit()
 	{
 		$idDriver = $this->input->post('edit');
 		$data['driverData'] = $this->m_admin->getDriverByID($idDriver);
+		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_editdriver', $data);
+		$this->load->view('admin/template/footer');
 	}
+
 
 	public function addDriverData()
 	{
@@ -96,7 +114,7 @@ class C_AdminHome extends CI_Controller {
 			);
 
 			$this->m_admin->addDriver($dataArray, "driver");
-			redirect('admin/C_AdminHome/menu');
+			redirect('admin/C_AdminHome/toDriverData');
 		}
 	}
 
@@ -162,7 +180,7 @@ class C_AdminHome extends CI_Controller {
 
 				$this->m_admin->editDriverWithImg($dataArray);
 				unlink('foto/driver/'.$fotoLama);
-				redirect('admin/C_AdminHome/menu');
+				redirect('admin/C_AdminHome/toDriverData');
 			}
 		}
 	}
@@ -172,16 +190,20 @@ class C_AdminHome extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'username','required');
 		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('admin/template/header');
 			$this->load->view('admin/v_tambahadmin', $data);
+			$this->load->view('admin/template/footer');
 		} else {
 			$this->m_admin->tambahAdmin();
-			redirect('admin/C_AdminHome/menu');
+			redirect('admin/C_AdminHome/viewAdmin');
 		}
 	}
 	public function viewAdmin()
 	{
 		$data['getadmin'] = $this->m_admin->getDataAdmin();
+		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_lihatadmin',$data);
+		$this->load->view('admin/template/footer');
 	}
 
 	public function delete($id)
@@ -189,6 +211,6 @@ class C_AdminHome extends CI_Controller {
 		$data['dataAdmin'] = $this->m_admin->get_admin_by_id($id);
 		if (empty($id) || !$data['dataAdmin']) show_404();
 		$this->m_admin->deleteDataAdmin($id);
-		redirect('admin/C_AdminHome/menu');
+		redirect('admin/C_AdminHome/viewAdmin');
 	}
 }

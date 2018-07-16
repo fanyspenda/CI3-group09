@@ -9,6 +9,7 @@ class C_AdminUser extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('m_adminuser');
 		$this->load->helper('form');
+		$this->load->model('m_admin');
 	}
 
 	public function index()
@@ -19,26 +20,34 @@ class C_AdminUser extends CI_Controller {
 	public function touserdata()
 	{
 		$data['getUser']=$this->m_adminuser->getDataUserArray();
+		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_lihatuser', $data);
+		$this->load->view('admin/template/footer');
 	}
 
 	public function toUserAdd()
 	{
+		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_tambahuser');
+		$this->load->view('admin/template/footer');
 	}
 
 	public function toUserDetail()
 	{
 		$idUser = $this->input->post('details');
 		$data['userData'] = $this->m_adminuser->getUserByID($idUser);
+		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_detailuser', $data);
+		$this->load->view('admin/template/footer');
 	}
 
 	public function toUserEdit()
 	{
 		$idUser = $this->input->post('edit');
 		$data['userData'] = $this->m_adminuser->getUserByID($idUser);
+		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_edituser', $data);
+		$this->load->view('admin/template/footer');
 	}
 
 	public function editUserData()
