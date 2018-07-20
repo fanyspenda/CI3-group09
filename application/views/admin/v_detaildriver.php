@@ -6,7 +6,7 @@
 			<div class="panel panel-headline">
 				<center><legend><i><b><h1>DETAIL DATA DRIVER</h1></b></i></legend></center>
 				<div style="margin-left: 50px; margin-right: 50px;">
-					<?php foreach ($driverDetail as $key) { ?>
+					<?php foreach ($driverData as $key) { ?>
 					<table class="table table-striped table-bordered">
 						<tbody>
 							<tr>			

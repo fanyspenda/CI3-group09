@@ -31,12 +31,12 @@
 								$imgLoader = $dirImageDriver . $imgName;
 								?>
 								<td><img src="<?php echo base_url($imgLoader);?>" style='width:185px; height: 200px'></td> -->
-								<td>
+<!-- 								<td>
 									<a href="<?php echo base_url() ?>admin/c_adminuser/toUserDetail/<?php echo $key['id'] ?>" class="btn btn-primary">Detail</a>
 									<a href="<?php echo base_url() ?>admin/c_adminuser/touseredit/<?php echo $key['id'] ?>" class="btn btn-warning">Edit</a>
 									<a href="<?php echo base_url() ?>admin/c_adminuser/userdelete/<?php echo $key['id'] ?>" class="btn btn-danger">Hapus</a>
-								</td>
-								<!-- <td>
+								</td> -->
+								<td>
 									<form action="<?php echo base_url('admin/c_adminuser/touseredit')?>" method="post">
 										<input type="hidden" name= "edit" class="form-control" value="<?php echo $key['id']; ?>">
 										<button class="btn btn-warning">Edit</button>
@@ -52,7 +52,7 @@
 										<input type="hidden" name= "details" class="form-control" value="<?php echo $key['id']; ?>">
 										<button class="btn btn-success">Details</button>
 									</form>
-								</td> -->
+								</td>
 							</tr>
 							<?php } ?>
 						</tbody>

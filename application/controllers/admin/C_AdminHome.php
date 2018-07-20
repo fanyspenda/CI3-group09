@@ -73,7 +73,14 @@ class C_AdminHome extends CI_Controller {
 		$this->load->view('admin/template/footer');
 	}
 
-
+	public function toDriverDetail()
+	{
+		$idDriver = $this->input->post('details');
+		$data['driverData'] = $this->m_admin->getDriverByID($idDriver);
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/v_detaildriver', $data);
+		$this->load->view('admin/template/footer');
+	}
 	public function addDriverData()
 	{
 		$id=$this->input->post('id');

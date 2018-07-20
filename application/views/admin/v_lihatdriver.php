@@ -29,11 +29,27 @@
 								$imgLoader = $dirImageDriver . $imgName;
 								?>
 								<td><img src="<?php echo base_url($imgLoader);?>" style='width:185px; height: 200px'></td> -->
-								<td>
+<!-- 								<td>
 									<a href="<?php echo base_url() ?>admin/C_AdminHome/todriverdetail/<?php echo $key['id'] ?>" class="btn btn-primary">Detail</a>
 									<a href="<?php echo base_url() ?>admin/C_AdminHome/todriveredit/<?php echo $key['id'] ?>" class="btn btn-warning">Edit</a>
 									<a href="<?php echo base_url() ?>admin/C_AdminHome/todriverdelete/<?php echo $key['id'] ?>" class="btn btn-danger">Hapus</a></td>
-								</tr>
+								</tr> -->
+								<td>
+																<form action="<?php echo base_url('admin/c_adminhome/todriveredit')?>" method="post">
+										<input type="hidden" name= "edit" class="form-control" value="<?php echo $key['id']; ?>">
+										<button class="btn btn-warning">Edit</button>
+									</form>
+									<br>
+									<form action="<?php echo base_url('admin/c_adminhome/todriverdelete')?>" method="post">
+										<input type="hidden" name= "delete" class="form-control" value="<?php echo $key['id']; ?>">
+										<button class="btn btn-danger" onclick="#delete">Delete</button>
+									</form>
+									<br>
+									<form action="<?php echo base_url('admin/c_adminhome/todriverdetail')?>" method="post">
+										<input type="hidden" name= "details" class="form-control" value="<?php echo $key['id']; ?>">
+										<button class="btn btn-success">Details</button>
+									</form>
+								</td>
 								<?php } ?>
 							</tbody>
 						</table>

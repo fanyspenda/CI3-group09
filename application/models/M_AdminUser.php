@@ -25,6 +25,12 @@ class M_AdminUser extends CI_Model {
 		return $query->result_array();
 	}
 
+		public function getDriverByID($id)
+	{
+		$query = $this->db->query('SELECT * from driver where id = "'.$id.'"');
+		return $query->result_array();
+	}
+
 	public function editUserNoImg($data)
 	{
 		$query = $this->db->query("UPDATE user set nama = '".$data['nama']."',
