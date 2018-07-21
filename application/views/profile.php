@@ -82,19 +82,11 @@
                     </tbody>
                   </table>
                 
-                  <a href="<?php echo site_url()?>/user/C_User/editProfil/<?php echo $getprofil[0]->id; ?>" class="btn btn-primary">Edit profil</a>
+                  <a href="<?php echo site_url()?>user/C_User/editProfil/<?php echo $getprofil[0]->id; ?>" class="btn btn-primary">Edit profil</a>
                 </div>
               </div>
-            </div>
-                 
-            
+            </div>  
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
-		

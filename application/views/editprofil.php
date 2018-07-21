@@ -38,12 +38,12 @@
 <br>
 <div align="center"><h2>EditProfil</h2></div>
      
-                      <?php echo form_open_multipart(''); ?>
-                        <div class="form-group">
+    <?php echo form_open_multipart(''); ?>
+      <div class="form-group">
       <label>Username:</label>
     <input type="text" class="form-control" name="username" value="<?php echo $getprofil[0]->username; ?>" >
     </div>
-               <div class="form-group">
+    <div class="form-group">
       <label>Nama:</label>
     <input type="text" class="form-control" name="nama" value="<?php echo $getprofil[0]->nama; ?>">
     </div>
@@ -67,7 +67,7 @@
       <label>Jenis Kelamin:</label><br>
     <select name="jenis_kelamin" id="" >
 
-      <?php if($getprofil[0]->jenis_kelamin == "wanita") {?>
+    <?php if($getprofil[0]->jenis_kelamin == "wanita") {?>
       <option value="wanita">wanita</option><option value="pria">pria</option></select>
     <?php }else {?><option value="pria">pria</option><option value="wanita">wanita</option></select>
     <?php } ?>
@@ -81,19 +81,19 @@
                      
       
                 
-                  <input type="submit" class="btn btn-primary" value="edit" >
-                  <?php form_close(); ?>
-              </div>
-<div class="container">
-<div align="center"><h2>Edit Password</h2></div>
+    <input type="submit" class="btn btn-primary" value="edit" >
+      <?php form_close(); ?>
+    </div>
+<!-- <div class="container"> -->
+<!-- <div align="center"><h2>Edit Password</h2></div>
 
-                      <?php echo form_open(''); ?>
+                      <?php /*echo form_open('')*/; ?>
  <div class="form-group">
       <label>Password Baru:</label><br>
    <input type="password"  name="password" value="">
     </div>
  <input type="submit" class="btn btn-primary" value="edit" >
-                  <?php form_close(); ?>
+                  <?php /*form_close()*/; ?> -->
 
 
 		

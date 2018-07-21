@@ -45,8 +45,8 @@ class M_UserTransaksi extends CI_Model {
 			'jenis_kelamin' =>$this->input->post('jenis_kelamin')
 
 		);
-		$this->db->where('id_akun', $id);
-		$this->db->update('calon', $data);
+		$this->db->where('id', $id);
+		$this->db->update('user', $data);
 		
 	}
 	public function editProfil($id)
@@ -61,8 +61,8 @@ class M_UserTransaksi extends CI_Model {
 			'nomorhp' =>$this->input->post('nomorhp'),
 			'jenis_kelamin' =>$this->input->post('jenis_kelamin')
 		);
-		$this->db->where('id_akun', $id);
-		$this->db->update('calon', $data);
+		$this->db->where('id', $id);
+		$this->db->update('user', $data);
 		
 	}
 }

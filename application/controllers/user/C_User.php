@@ -8,6 +8,7 @@ class C_User extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->helper('form');
+		$this->load->library('upload');
 		$this->load->library('form_validation');
 		$this->load->model('m_usertransaksi');
 	}
@@ -147,7 +148,7 @@ class C_User extends CI_Controller {
 				$this->load->view('template/footer');
         	}else{
         	
-        		$config['upload_path'] = './foto';
+        		$config['upload_path'] = './foto/user';
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 				$config['max_size']  = 10000000; //kb
 				$config['max_width']  = 10240; //pixel
@@ -165,15 +166,7 @@ class C_User extends CI_Controller {
 					echo '<script>alert("Data dan Foto Calon Berhasil di Update")</script>';
 					redirect('user/C_User/getProfil','refresh');
 				}
-
-
         	}
-
-
-
-
-		
-		
 	}
 }
 
