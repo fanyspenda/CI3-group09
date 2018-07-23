@@ -31,8 +31,10 @@
 		<div class="form-group">
 			<label>Metode Bayar</label>
 			<select name="metodeBayar">
+				<?php if ($_SESSION['level'] == 1) { ?>
+					<option value="transfer">Transfer</option>
+				<?php } ?>
 				<option value="langsung">Langsung</option>
-				<option value="transfer">Transfer</option>
 			</select>
 		</div>
 

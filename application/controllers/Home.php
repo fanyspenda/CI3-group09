@@ -13,10 +13,17 @@ class Home extends CI_Controller {
 		
 	}
 
-
 	public function index()
 	{
-		$this->load->view('index.php');
+		if(!$this->session->has_userdata('level')){
+			$this->load->view('index.php');
+		}
+		else if($_SESSION['level']<=1){
+			redirect('user/c_user');
+		}
+		else {
+			redirect('admin/c_adminhome');
+		}
 	}
 	public function profile()
 	{
@@ -66,48 +73,53 @@ class Home extends CI_Controller {
         	//jika nilai data tidak false
         	if($data['user']!=false){
 
-        		//menentukan level user
-        		$levelUser = $this->m_login->getLevel($username, $encPassword);
-
-        		//jika level user tidak false
-				if ($levelUser) {
-
-					//menyatukan data user dan level ke dalam suatu array
-					foreach ($data['user'] as $key) {
-			        	$arrayDataUser = array(
-			        		'userid' => $key['id'],
-			        		'level' => $levelUser,
-			        		'nama' => $key['nama'],
-			        		'password' => $key['password'],
-			        		'foto' => $key['foto']
-			        	);
-					}
+				//menyatukan data user dan level ke dalam suatu array
+				foreach ($data['user'] as $key) {
+			       	
+			       	if ($key['level']<=1) {
+				       	$arrayDataUser = array(
+				       		'userid' => $key['id'],
+				       		'level' => $key['level'],
+				       		'nama' => $key['nama'],
+				       		'password' => $key['password'],
+				       		'foto' => $key['foto']
+			       		);
+			       	}
+			       	else {
+			       		$arrayDataUser = array(
+				       		'userid' => $key['id'],
+				       		'level' => $key['level'],
+				       		'nama' => $key['nama'],
+				       		'password' => $key['password'],
+			       		);
+			       	}
 
 					//membuat session baru sesuai dengan data yang ada pada array $arrayDataUser
-		        	$this->session->set_userdata($arrayDataUser);
+			       	$this->session->set_userdata($arrayDataUser);
 
 		        	//membuat pesan sukses
 		        	$this->session->set_flashdata('loggedIn', 'Selamat Datang, '.$_SESSION['nama']);
 
 		        	//jika user memiliki level 1, maka akan diarahkan ke halaman user biasa
-		        	if($levelUser==1){
+		        	if($key['level'] <=1){
 		        		redirect('user/c_user');
 		        	}
 
-		        	//jika memiliki level 2, maka akan diarahkan ke halaman admin
-		        	elseif ($levelUser==2) {
-		        		redirect('admin/c_adminhome/menu');
+		        	elseif ($key['level'] ==3) {
+		        		redirect('admin/c_adminhome/');
 		        	}
-		        }
-        	}
+	    
+	    	    }
+       		}
 
-        	//jika data username tidak ditemukan, mengembalikan ke halaman login dengan pesan error
-        	elseif ($data['user']==false){
-        		$this->session->set_flashdata('invalidLogin', 'Username atau password salah');
-        		$this->load->view('v_login');
-        	}
-        }
+	       	//jika data username tidak ditemukan, mengembalikan ke halaman login dengan pesan error
+	       	elseif ($data['user']==false){
+	       		$this->session->set_flashdata('invalidLogin', 'Username atau password salah');
+	       		$this->load->view('v_login');
+	       	}
+    	}
 	}
+	
 	// public function transaksi()
 	// {
 	// 	$this->load->view('transaksi');

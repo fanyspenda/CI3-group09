@@ -60,6 +60,12 @@ class M_AdminUser extends CI_Model {
 	{
 		$this->db->query("delete from user where id = ".$idUser);
 	}
+
+	public function getLevel()
+	{
+		$result = $this->db->query("select * from level where level <= 1");
+		return $result->result_array();
+	}
 }
 
 /* End of file M_UserAdmin.php */

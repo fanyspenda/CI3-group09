@@ -37,7 +37,7 @@ class M_Login extends CI_Model {
 	}
 
 	//fungsi menentukan level dari user
-	public function getLevel($username, $password)
+/*	public function getLevel($username, $password)
 	{
 		//mencari data username dan password pada tabel user
 		$result = $this->db->query("SELECT * from user where username = '".$username."' AND password = '".$password."'");
@@ -45,7 +45,7 @@ class M_Login extends CI_Model {
 		if($result->num_rows()==1){
 
 			//mengembalikan nilai level = 1
-			return 1;
+			return $result['level'];
 		}
 
 		elseif($result->num_rows()<1){
@@ -63,5 +63,5 @@ class M_Login extends CI_Model {
 				return false;
 			}
 		}
-	}
+	}*/
 }

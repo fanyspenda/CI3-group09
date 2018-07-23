@@ -55,10 +55,11 @@ class M_admin extends CI_Model {
 	{
 		$data = array(
 			'username'   => $this->input->post('username'),
-			'password'   => $this->input->post('password'),
+			'password'   => md5($this->input->post('password')),
 			'nama'   => $this->input->post('nama'),
 			'alamat'   => $this->input->post('alamat'),
 			'NIK'   => $this->input->post('NIK'),
+			'level' => 3,
 			'nomorhp'   => $this->input->post('nomorhp')	
 		);
 

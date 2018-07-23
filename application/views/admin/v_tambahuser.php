@@ -7,14 +7,21 @@
 				<?php echo form_open_multipart('admin/C_AdminUser/addUserData');?>
 				<center><legend><i><b><h1>FORM TAMBAH DATA USER</h1></b></i></legend></center>
 				<div style="margin-left: 50px; margin-right: 50px;">
-					<label>ID</label>
-					<input type="text" class="form-control" name="id" placeholder="ID User" required><br><br>
+					<!-- <label>ID</label>
+					<input type="text" class="form-control" name="id" placeholder="ID User" required><br><br> -->
 
 					<label>Username</label>
 					<input type="text" class="form-control" name="username" placeholder="Username" required><br><br>
 
 					<label>Password</label>
 					<input type="Password" class="form-control" name="password" placeholder="Password" required><br><br>
+
+					<label>level</label>
+					<select name="level">
+						<?php foreach ($level as $key) { ?>
+						<option value="<?php echo $key['level']?>"><?php echo $key['nama_level'];?></option>
+						<?php } ?>
+					</select><br><br>
 
 					<label>NIK</label>
 					<input type="text" class="form-control" name="nik" placeholder="NIK User" required><br><br>

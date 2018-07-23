@@ -83,7 +83,11 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-id-card-o"></i><a href="<?php echo base_url('user/c_user/getProfil')?>">Lihat Data Diri</a></li>
                         </ul>
-                    </li><!-- 
+                    </li>
+
+                    <a href="<?php echo base_url("user/c_user/logout");?>" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-share-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
+
+                    <!-- 
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
                         <ul class="sub-menu children dropdown-menu">

@@ -9,14 +9,16 @@
 				<?php foreach ($userData as $key) { ?>
 
 				<div style="margin-left: 50px; margin-right: 50px;">
-					<label>ID</label>
-					<input type="text" class="form-control" name="id" placeholder="ID User" value="<?php echo $key['id']?>" readonly><br><br>
+
+					<input type="hidden" name="unchangedPass" value="<?php echo $key['password']?>">
+					<input type="hidden" class="form-control" name="id" placeholder="ID User" value="<?php echo $key['id']?>">
 
 					<label>Username</label>
 					<input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo $key['username']?>" required><br><br>
 
 					<label>Password</label>
-					<input type="Password" class="form-control" name="password" placeholder="Password" value="<?php echo $key['password']?>" required><br><br>
+					<input type="Password" class="form-control" name="password" placeholder="Password" value="<?php echo $key['password']?>" required>
+					ubah password?&nbsp;&nbsp;<input type="checkbox" name="checkpass"><br><br>
 
 					<label>NIK</label>
 					<input type="text" class="form-control" name="nik" placeholder="NIK User" value="<?php echo $key['NIK']?>" required><br><br>

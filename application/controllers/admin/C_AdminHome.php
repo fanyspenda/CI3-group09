@@ -9,35 +9,55 @@ class C_AdminHome extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('m_admin');
 		$this->load->helper('form');
-		$this->load->library('form_validation');
+		$this->load->library('form_validation');	
+		$this->validasiHalaman();
+	}
+
+	public function validasiHalaman()
+	{
+		//jika userid belum terisi atau session level belum terisi
+		if(!isset($_SESSION['userid']) OR !isset($_SESSION['level'])){
+			$this->session->set_flashdata('mustLogin', 'Anda Harus Login!');
+			redirect('home');
+		}
 		
+		//jika akun yang telah diloginkan bukan user, maka diredirect untuk login ulang
+		elseif ($_SESSION['level']<3) {	
+			//mengkosongkan nilai session level tanpa menghapus(destroy) variabelnya. sehingga, validasi di atas masih bisa berjalan
+			$this->session->set_userdata('level', null);
+			$this->session->set_userdata('userid', null);
+			$this->session->set_flashdata('wrongUser', 'Sesi Berakhir! Lakukan Login Ulang');
+			redirect('home');
+		}
 	}
 
 	public function index()
 	{
 		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_index');
-		$this->load->view('admin/template/footer');
+		//$this->load->view('admin/template/footer');
 	}
 
 	public function getTransaksi()
 	{
-
+		$this->validasiHalaman();
 		$this->load->model('M_transaksi');
 		$data['datatransaksi']= $this->M_transaksi->getAllTransaksi();
 		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_lihattransaksi', $data);
-		$this->load->view('admin/template/footer');
+		//$this->load->view('admin/template/footer');
 	}
 
 	public function deleteTransaksi($id)
 	{
+		$this->validasiHalaman();
 		$this->load->model('M_transaksi');
 		$this->M_transaksi->delete($id);
 		redirect('admin/C_AdminHome/getTransaksi','refresh');
 	}
 	public function editTransaksi($id)
 	{
+		$this->validasiHalaman();
 		$this->load->model('M_transaksi');
 		$this->M_transaksi->edit($id);
 		redirect('admin/C_AdminHome/getTransaksi','refresh');
@@ -45,20 +65,23 @@ class C_AdminHome extends CI_Controller {
 
 	public function menu()
 	{
+		$this->validasiHalaman();
 		$this->load->view('admin/v_adminhome');
 	}
 
 	public function toDriverData()
 	{
+		$this->validasiHalaman();
 		$data['getDriver']=$this->m_admin->getDataDriverArray();
 		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_lihatdriver', $data);		
-		$this->load->view('admin/template/footer');
+		//$this->load->view('admin/template/footer');
 
 	}
 
 	public function toDriverAdd()
 	{
+		$this->validasiHalaman();
 		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_tambahdriver');
 		$this->load->view('admin/template/footer');
@@ -66,6 +89,7 @@ class C_AdminHome extends CI_Controller {
 
 	public function toDriverEdit()
 	{
+		$this->validasiHalaman();
 		$idDriver = $this->input->post('edit');
 		$data['driverData'] = $this->m_admin->getDriverByID($idDriver);
 		$this->load->view('admin/template/header');
@@ -75,6 +99,7 @@ class C_AdminHome extends CI_Controller {
 
 	public function toDriverDetail()
 	{
+		$this->validasiHalaman();
 		$idDriver = $this->input->post('details');
 		$data['driverData'] = $this->m_admin->getDriverByID($idDriver);
 		$this->load->view('admin/template/header');
@@ -207,10 +232,11 @@ class C_AdminHome extends CI_Controller {
 	}
 	public function viewAdmin()
 	{
+		$this->validasiHalaman();
 		$data['getadmin'] = $this->m_admin->getDataAdmin();
 		$this->load->view('admin/template/header');
 		$this->load->view('admin/v_lihatadmin',$data);
-		$this->load->view('admin/template/footer');
+		//$this->load->view('admin/template/footer');
 	}
 
 	public function delete($id)
