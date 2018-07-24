@@ -86,6 +86,17 @@ class M_admin extends CI_Model {
 		$query = $this->db->get_where('admin', array('id' => $id));
 		return $query->row();
 	}
+
+	public function deleteDriver($id)
+	{
+		$this->db->query('delete from driver where id = '.$id);
+	}
+
+	public function getDriverWhenKosong()
+	{
+		$result = $this->db->query("select * from driver where status_kerja = 'kosong'");
+		return $result->result_array();
+	}
 }
 
 /* End of file driver.php */

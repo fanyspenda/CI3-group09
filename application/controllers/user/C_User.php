@@ -11,6 +11,8 @@ class C_User extends CI_Controller {
 		$this->load->library('upload');
 		$this->load->library('form_validation');
 		$this->load->model('m_usertransaksi');
+		$this->load->library('pagination');
+		$this->load->model('m_admin');
 	}
 
 	public function validasiHalaman()
@@ -34,8 +36,26 @@ class C_User extends CI_Controller {
 	public function index()
 	{
 		$this->validasiHalaman();
+
+		$this->load->library('pagination');
+		$this->load->library('table');
+
+		$config['base_url'] = 'http://localhost:81/CI3-Kelompok09/user/c_user/index';
+		$config['total_rows'] = $this->db->get('driver')->num_rows();
+		$config['per_page'] = 2;
+		$config['num_links'] = 2;
+		$config["uri_segment"] = 4;
+		$config['next_link'] = '';
+		$config['prev_link'] = '';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+				
+		$this->pagination->initialize($config);
+
+		$query = $this->db->get('driver', $config['per_page'], $this->uri->segment(4));
+		$data['records'] = $query->result_array();
 		$this->load->view('template/header');
-		$this->load->view('user/v_home');
+		$this->load->view('user/v_home', $data);
 		$this->load->view('template/footer');
 	}
 
@@ -105,6 +125,7 @@ class C_User extends CI_Controller {
 				'kota_tujuan' => $kotaTujuan,
 				'jumlah_hari' => $jumlahHari,
 				'tanggal_kembali' => $this->input->post('tglkembali'),
+				'metode_bayar' => $metodeBayar,
 				'status' => "Baru Dibuat",
 				'harga_total' => $hargaTotal
 			);
@@ -117,16 +138,18 @@ class C_User extends CI_Controller {
 
 	public function lihatTransaksi()
 	{
-		$getTransaksiUser['getbysession']=  $this->m_usertransaksi->getTransaksiUser($_SESSION['userid']);
+		$getTransaksiUser['getbysession'] =  $this->m_usertransaksi->getTransaksiUser($_SESSION['userid']);
 		//var_dump($getTransaksiUser);
 
 		$this->load->view('template/header');
 		$this->load->view('user/v_lihatTransaksi',$getTransaksiUser);
 		$this->load->view('template/footer');
 	}
-	public function deleteTransaksiUser($id)
+	public function deleteTransaksi($id)
 	{
-		
+
+		$this->m_usertransaksi->deleteTransaksi($id);
+		redirect('user/c_user/lihattransaksi');
 	}
 	public function getProfil()
 	{
@@ -176,6 +199,31 @@ class C_User extends CI_Controller {
 		$this->session->set_userdata('level', null);
 		$this->session->set_userdata('userid', null);
 		redirect('home');
+	}
+
+	public function pagination()
+	{
+		$limit_per_page = 2;
+        // URI segment untuk mendeteksi "halaman ke berapa" dari URL
+        $start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
+        // Dapatkan jumlah data
+        $total_records = $this->blog->get_total();
+        if ($total_records > 0) {
+		    // Dapatkan data pada halaman yg dituju
+		    $data["all_artikel"] = $this->blog->get_all_artikel($limit_per_page, $start_index);
+		    
+		    // Konfigurasi pagination
+		    $config['base_url'] = base_url() . 'home/pagination';
+		    $config['total_rows'] = $total_records;
+		    $config['per_page'] = $limit_per_page;
+		    $config["uri_segment"] = 3;
+		    
+		    $this->pagination->initialize($config);
+		    
+		    // Buat link pagination
+		    $data["links"] = $this->pagination->create_links();
+		    $this->load->view('blog', $data);
+		}
 	}
 }
 

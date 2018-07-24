@@ -35,12 +35,12 @@
 									<a href="<?php echo base_url() ?>admin/C_AdminHome/todriverdelete/<?php echo $key['id'] ?>" class="btn btn-danger">Hapus</a></td>
 								</tr> -->
 								<td>
-																<form action="<?php echo base_url('admin/c_adminhome/todriveredit')?>" method="post">
+										<form action="<?php echo base_url('admin/c_adminhome/todriveredit')?>" method="post">
 										<input type="hidden" name= "edit" class="form-control" value="<?php echo $key['id']; ?>">
 										<button class="btn btn-warning">Edit</button>
 									</form>
 									<br>
-									<form action="<?php echo base_url('admin/c_adminhome/todriverdelete')?>" method="post">
+									<form action="<?php echo base_url('admin/c_adminhome/deleteDriver')?>" method="post">
 										<input type="hidden" name= "delete" class="form-control" value="<?php echo $key['id']; ?>">
 										<button class="btn btn-danger" onclick="#delete">Delete</button>
 									</form>

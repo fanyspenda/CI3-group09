@@ -30,7 +30,7 @@
 	</legend>
 </center>
 <div class="container">
-	<?php foreach ($getbysession as $key => $value ) { ?>
+	
 	<table class="table table-striped table-bordered data">
 		<thead>
 			<tr>			
@@ -46,6 +46,7 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php foreach ($getbysession as $key => $value ) { ?>
 			<tr>			<!-- 
 				<th>No</th> -->
 				<td><?php echo $key+1?></td>
@@ -60,31 +61,23 @@
 				<!-- <th>Tanggal Kembali</th> -->
 				<td><?php echo $value['tanggal_kembali']?></td>
 				
-				<td><?php echo $value['harga_total']?></td><!-- <th>Status</th> -->
+				<td><?php echo $value['harga_total']?></td>
 				<td><?php echo $value['status']?></td>
-				<!-- <th>Harga</th> -->
 				
 				<td>
-					<button type="button" class="btn btn-warning" href="<?php echo base_url('') . $value['id'] ?>">Edit</button>
-					<button type="button" class="btn btn-danger" href="<?php echo base_url('') . $value['id'] ?>">Delete</button>
-					<!-- <form action="<?php echo base_url('admin/c_adminhome/todriveredit')?>" method="post">
-						<input type="hidden" name= "edit" class="form-control" value="<?php echo $key['id']; ?>">
-						<button class="btn btn-warning">Edit</button>
-					</form>
-					<form action="<?php echo base_url('admin/c_adminhome/todriverdelete')?>" method="post">
-						<input type="hidden" name= "delete" class="form-control" value="<?php echo $key['id']; ?>">
-						<button class="btn btn-danger" onclick="#delete">Delete</button>
-					</form>
-					<form action="<?php echo base_url('admin/c_adminhome/todriverdetail')?>" method="post">
-						<input type="hidden" name= "details" class="form-control" value="<?php echo $key['id']; ?>">
-						<button class="btn btn-success">Details</button>
-					</form> -->
+					<?php if ($value['id_driver']==NULL) { ?>
+						<a href="<?php echo base_url()?>user/c_user/deletetransaksi/<?php echo $value['id_transaksi']?>" class="btn btn-danger">Delete</button>
+					<?php } else { ?>
+						<h4><strong>Terkonfirmasi</strong></h4>
+					<?php } ?>
 				</td>
 			</tr>
+			<?php } ?>
 		</tbody>
 	</table>
 	<br><br>
-	<?php } ?>
+
+	<p>apabila Transaksi tidak bisa dihapus, Maka Transaksi Telah dikonfirmasi oleh Admin.</p>
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){

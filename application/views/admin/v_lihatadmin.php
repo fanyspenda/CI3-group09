@@ -11,7 +11,7 @@
 							<tr>			
 								<th>ID</th>
 								<th>Username</th>
-								<th>password</th>
+								<!-- <th>password</th> -->
 								<th>Nama</th>
 								<th>Alamat</th>
 								<th>Nomor HP</th>
@@ -24,7 +24,7 @@
 							<tr>				
 								<td><?php echo $key['id']; ?></td>
 								<td><?php echo $key['username']; ?></td>
-								<td><?php echo $key['password']; ?></td>
+								<!-- <td><?php /*echo $key['password']*/; ?></td> -->
 								<td><?php echo $key['nama']; ?></td>
 								<td><?php echo $key['alamat']; ?></td>
 								<td><?php echo $key['nomorhp']; ?></td>

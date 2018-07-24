@@ -65,6 +65,11 @@ class M_UserTransaksi extends CI_Model {
 		$this->db->update('user', $data);
 		
 	}
+
+	public function deleteTransaksi($id)
+	{
+		$this->db->query("delete from transaksi where id_transaksi = ".$id);
+	}
 }
 
 /* End of file m_UserTransaksi.php */
