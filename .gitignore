@@ -10,6 +10,7 @@ application/logs/*
 
 application/config/
 system/*
+foto/*
 
 
 composer.lock
@@ -31,8 +32,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
-*.jpg
-*.png
 /tests/tests/
 /tests/results/
 
